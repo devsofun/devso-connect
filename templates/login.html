@@ -6,8 +6,10 @@
 <body>
     <h1>Login</h1>
     <form action="/login" method="post">
-        <label for="username">Enter Username:</label><br>
-        <input type="text" id="username" name="username"><br><br>
+        <label for="username">Generate a Paste Link with the Content Below:</label><br>
+        <p>{{ .checkStr }}</p>
+        <input type="text" id="pasteUrl" name="pasteUrl"><br><br>
+        <input type="hidden" name="checkStr" value="{{ .checkStr }}">
         <input type="submit" value="Submit">
     </form>
 </body>

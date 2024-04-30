@@ -1,4 +1,4 @@
-module devso-connect
+module myapp
 
 go 1.22.2
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"net/http"
+	"myapp/routes"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,22 +11,9 @@ func main() {
 
 	router.LoadHTMLGlob("templates/*")
 
-	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Name":    "Gin",
-			"Version": "0.0.1",
-		})
-	})
+	// 加载路由
+	routes.SetupRoutes(router)
 
-	router.GET("/login", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "login.html", nil)
-	})
-
-	router.POST("/login", func(c *gin.Context) {
-		username := c.PostForm("username")
-		println("Received username:", username)
-		c.String(http.StatusOK, "Received username: %s", username)
-	})
-
+	// 启动服务
 	router.Run(":8080")
 }
